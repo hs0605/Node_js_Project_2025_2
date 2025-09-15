@@ -6,7 +6,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-    res.send('about data');
+    res.send('Player data 11111 ');
 });
 
 app.listen(3000, function(){

@@ -18,20 +18,20 @@ public class basicMain : MonoBehaviour
             var url = string.Format("{0}:{1}/{2}", host, port, route);
             Debug.Log(url);
 
-            StartCoroution(this.GetBasic(url, (raw) =>
+            StartCoroutine(this.GetBasic(url, (raw) =>
             {
                 Debug.LogFormat("{0}", raw);
             }));
         });
     }
 
-    private Enumerator GetBasic(string url , System.Action<string> callback) 
+    private IEnumerator GetBasic(string url , System.Action<string> callback) 
     {
         var webRequset = UnityWebRequest.Get(url);
         yield return webRequset.SendWebRequest();
 
         if (webRequset.result == UnityWebRequest.Result.ConnectionError
-            || webRequset.result == UnityWebRequest.Result.ProtocolEroor)
+            || webRequset.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.Log("네트워크 환경이 좋지 않아서 통신 불가 ");
         }
