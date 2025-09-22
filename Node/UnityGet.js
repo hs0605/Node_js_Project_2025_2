@@ -47,4 +47,18 @@ app.post("/userdata" , (req, res) => {
             result.message = '데이터 갱신'
         }
         res.send(result);
+    app.get("/userdata/list" , (req, res) => {
+        let result = user.sort(function(a,b)
+        {
+            return b.score - a.score;
+        });
+
+        result = result.slice(0,users.length)
+
+        res.send({
+            cmd : 1101,
+            message :'',
+            result
+        })
+    })
 })
